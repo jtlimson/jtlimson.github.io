@@ -1,0 +1,55 @@
+observed_at,card_id,psa10_population,psa9_population,total_population,psa_estimate_usd,source_url,verified_identity,notes
+2026-08-09T00:00:00+09:00,mega-gengar-ex-240,32900,,,591.00,https://www.psacard.com/cert/157096189/psa,true,Initial baseline verified on rendered PSA cert page
+2026-08-09T00:00:00+09:00,umbreon-ex-217,78681,,,617.00,https://www.psacard.com/cert/106454363/psa,true,Initial baseline verified on rendered PSA cert page
+2026-08-10T00:03:19+09:00,mega-darkrai-ex-114,2304,,,383.00,https://www.psacard.com/cert/163314143/psa,true,Initial baseline verified on rendered PSA cert page
+2026-08-10T00:03:19+09:00,pikachu-ex-234,30428,,,420.00,https://www.psacard.com/cert/152488646/psa,true,Initial baseline verified on rendered PSA cert page
+2026-08-10T00:03:19+09:00,rockets-mewtwo-ex-237,18093,,,231.00,https://www.psacard.com/cert/142644844/psa,true,Initial baseline verified on rendered PSA cert page
+2026-08-10T00:03:19+09:00,mega-dragonite-ex-246,25511,,,326.00,https://www.psacard.com/cert/153173037/psa,true,Initial baseline verified on rendered PSA cert page
+2026-08-10T17:11:46+09:00,mega-gengar-ex-240,32984,,,589.00,https://www.psacard.com/cert/157096189/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T17:16:43+09:00,umbreon-ex-217,78703,,,607.00,https://www.psacard.com/cert/106454363/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T17:17:06+09:00,mega-gengar-ex-240,32984,,,589.00,https://www.psacard.com/cert/157096189/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T17:17:06+09:00,umbreon-ex-217,78703,,,607.00,https://www.psacard.com/cert/106454363/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T17:17:06+09:00,mega-darkrai-ex-114,2322,,,371.00,https://www.psacard.com/cert/163314143/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T17:17:06+09:00,pikachu-ex-234,30528,,,414.00,https://www.psacard.com/cert/152488646/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T17:17:06+09:00,rockets-mewtwo-ex-237,18160,,,228.00,https://www.psacard.com/cert/142644844/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T17:17:06+09:00,mega-dragonite-ex-246,25593,,,326.00,https://www.psacard.com/cert/153173037/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T21:01:06+09:00,mega-gengar-ex-240,32984,,,589.00,https://www.psacard.com/cert/157096189/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T21:01:06+09:00,umbreon-ex-217,78703,,,607.00,https://www.psacard.com/cert/106454363/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T21:01:06+09:00,mega-darkrai-ex-114,2322,,,371.00,https://www.psacard.com/cert/163314143/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T21:01:06+09:00,pikachu-ex-234,30528,,,414.00,https://www.psacard.com/cert/152488646/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T21:01:06+09:00,rockets-mewtwo-ex-237,18160,,,228.00,https://www.psacard.com/cert/142644844/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-10T21:01:06+09:00,mega-dragonite-ex-246,25593,,,326.00,https://www.psacard.com/cert/153173037/psa,true,Automated Raspberry Pi snapshot verified on rendered PSA cert page
+2026-08-11T00:34:19+09:00,pikachu-ex-764,6120,,,,https://www.psacard.com/cert/155142448/psa,true,Manual web baseline verified on PSA cert page
+2026-08-11T00:34:19+09:00,charizard-ex-201,37451,,,,https://www.psacard.com/cert/84248781/psa,true,Manual web baseline verified on PSA cert page
+2026-08-11T00:34:19+09:00,charizard-ex-134,19832,,,,https://www.psacard.com/cert/97617915/psa,true,Manual web baseline verified on PSA cert page
+2026-08-11T00:34:19+09:00,mew-ex-347,26245,,,,https://www.psacard.com/cert/123263015/psa,true,Manual web baseline verified on PSA cert page
+2026-08-11T00:34:19+09:00,charizard-ex-349,24316,,,,https://www.psacard.com/cert/84814871/psa,true,Manual web baseline verified on PSA cert page
+2026-08-11T00:34:19+09:00,mega-charizard-x-ex-110,49129,,,,https://www.psacard.com/cert/150956440/psa,true,Manual web baseline verified on PSA cert page
+2026-08-11T00:34:19+09:00,giratina-v-111,13566,,,,https://www.psacard.com/cert/102844039/psa,true,Manual web baseline verified on PSA cert page
+2026-08-11T00:34:19+09:00,rayquaza-vmax-083,2494,,,,https://www.psacard.com/cert/82607058/psa,true,Manual web baseline verified on PSA cert page
+2026-08-11T00:42:23+09:00,mega-gengar-ex-240,32984,,,589.00,https://www.psacard.com/cert/157096189/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,umbreon-ex-217,78703,,,607.00,https://www.psacard.com/cert/106454363/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,mega-darkrai-ex-114,2322,,,371.00,https://www.psacard.com/cert/163314143/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,pikachu-ex-234,30528,,,414.00,https://www.psacard.com/cert/152488646/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,pikachu-ex-764,6120,,,2250.00,https://www.psacard.com/cert/155142448/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,rockets-mewtwo-ex-237,18160,,,238.00,https://www.psacard.com/cert/142644844/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,mega-dragonite-ex-246,25593,,,326.00,https://www.psacard.com/cert/153173037/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,charizard-ex-201,37451,,,630.00,https://www.psacard.com/cert/84248781/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,charizard-ex-134,19832,,,406.00,https://www.psacard.com/cert/97617915/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,mew-ex-347,26245,,,841.00,https://www.psacard.com/cert/123263015/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,charizard-ex-349,24316,,,380.00,https://www.psacard.com/cert/84814871/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,mega-charizard-x-ex-110,49129,,,1042.00,https://www.psacard.com/cert/150956440/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,giratina-v-111,13566,,,1898.00,https://www.psacard.com/cert/102844039/psa,true,Web snapshot with PSA estimate
+2026-08-11T00:42:23+09:00,rayquaza-vmax-083,2494,,,6591.00,https://www.psacard.com/cert/82607058/psa,true,Web snapshot with PSA estimate
+2026-08-11T02:25:00+09:00,pikachu-mcdonalds-020,281276,,,86.00,https://www.psacard.com/cert/129322206/psa,true,
+2026-08-11T02:25:00+09:00,pikachu-grey-felt-hat-085,47968,,,2789.00,https://www.psacard.com/cert/83910102/psa,true,
+2026-08-11T02:25:00+09:00,charizard-ex-sir-199,28239,,,1521.00,https://www.psacard.com/cert/129504577/psa,true,
+2026-08-11T02:25:00+09:00,charizard-v-050,50797,,,86.00,https://www.psacard.com/cert/103091987/psa,true,
+2026-08-11T02:25:00+09:00,charizard-holo-004,486,,,11640.00,https://www.psacard.com/cert/05318636/psa,true,
+2026-08-11T02:25:00+09:00,pikachu-sv-promo-001,74721,,,104.00,https://www.psacard.com/cert/80282211/psa,true,
+2026-08-11T02:25:00+09:00,eevee-svp-173,30742,,,134.00,https://www.psacard.com/cert/111607960/psa,true,
+2026-08-11T02:25:00+09:00,ancient-mew,3888,,,2674.00,https://www.psacard.com/cert/101091008/psa,true,
+2026-08-11T02:25:00+09:00,moltres-zapdos-articuno-gx-sm210,42026,,,418.00,https://www.psacard.com/cert/70650956/psa,true,
+2026-08-11T03:00:00+09:00,rockets-giovanni-270,3212,,,78.00,https://www.psacard.com/cert/134045863/psa,true,Indexed PSA GEM MT 10 cert snapshot; rendered collector challenged
+2026-08-11T03:00:00+09:00,giratina-vstar-261,29671,,,327.00,https://www.psacard.com/cert/89854465/psa,true,Indexed PSA GEM MT 10 cert snapshot; rendered collector challenged
+2026-08-11T03:00:00+09:00,arceus-vstar-262,24338,,,211.00,https://www.psacard.com/cert/76548435/psa,true,Indexed PSA GEM MT 10 cert snapshot; rendered collector challenged
