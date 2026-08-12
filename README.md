@@ -103,7 +103,7 @@ record nothing and report the failed check. Never substitute zero.
 
 PSA states that its population report is updated daily. Its public API does not
 reliably expose population counts, and direct automated HTTP requests may be
-blocked, so the recurring Codex monitor verifies the rendered cert pages.
+blocked, so the recurring collector validates text-rendered public cert records.
 
 ## Raspberry Pi deployment
 
@@ -114,11 +114,18 @@ front-slab image when available, records only validated values, and rebuilds the
 dashboard. User-level systemd services serve the dashboard on port 8080.
 
 The scheduled collector checks every configured card once per day at 21:00
-Asia/Tokyo, opens a fresh browser for each card, and waits 45 seconds between
-requests. A missed run starts when the Pi returns online. If the mirror or PSA
+Asia/Tokyo and waits 45 seconds between requests. A missed run starts when the
+Pi returns online. If the mirror or PSA
 record is unavailable, mismatched, or incomplete, the collector records nothing
 for that card, reports the failure, and continues with the remaining cards.
 
 Scheduled output and errors are appended to `data/collector.log`. Check recent
 failures with `tail -n 100 data/collector.log`; systemd journal output remains
 available with `journalctl --user -u card-pop-collector.service`.
+
+After each collector run renders the dashboard, `publish_site.py` synchronizes
+the public dashboard, ASI page, card configuration, population/market CSVs, and
+configured slab images to `publish/jtlimson.github.io`, then commits and pushes
+the update. It preserves the repository's separate `index.html` and never
+publishes `data/collector.log`. Run `python publish_site.py --no-push` to test a
+local sync and commit without pushing.
