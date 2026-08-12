@@ -98,7 +98,7 @@ Only record a value after the PSA page confirms all of the following:
 4. Item grade `GEM MT 10`
 5. A numeric `PSA POPULATION`
 
-If PSA shows a challenge, sign-in page, incomplete page, or missing population,
+If the PSA text record is incomplete, stale-looking, or missing population,
 record nothing and report the failed check. Never substitute zero.
 
 PSA states that its population report is updated daily. Its public API does not
@@ -107,15 +107,17 @@ blocked, so the recurring Codex monitor verifies the rendered cert pages.
 
 ## Raspberry Pi deployment
 
-The Pi runs `pi_collector.py` with system Chromium. The collector validates all
-identity fields from `cards.json`, records only verified values, and rebuilds
-the dashboard. User-level systemd services serve the dashboard on port 8080.
+The Pi runs `pi_collector.py` against a text-rendered copy of each public PSA
+certification record. The collector validates all identity fields from
+`cards.json`, requires GEM MT 10 and a numeric population, refreshes the official
+front-slab image when available, records only validated values, and rebuilds the
+dashboard. User-level systemd services serve the dashboard on port 8080.
 
 The scheduled collector checks every configured card once per day at 21:00
 Asia/Tokyo, opens a fresh browser for each card, and waits 45 seconds between
-requests. A missed run starts when the Pi returns online. If PSA serves a
-challenge or an incomplete page, the collector records nothing for that card,
-reports the failure, and continues with the remaining cards.
+requests. A missed run starts when the Pi returns online. If the mirror or PSA
+record is unavailable, mismatched, or incomplete, the collector records nothing
+for that card, reports the failure, and continues with the remaining cards.
 
 Scheduled output and errors are appended to `data/collector.log`. Check recent
 failures with `tail -n 100 data/collector.log`; systemd journal output remains

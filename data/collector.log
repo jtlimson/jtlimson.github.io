@@ -25,3 +25,13 @@ Recorded Arceus VSTAR UR 262/172: PSA 10 population 24,500; PSA estimate $209.00
 Wrote /home/yuka/card-pop-monitor/dashboard.html
 Wrote /home/yuka/card-pop-monitor/about-asi.html
 Recorded 24 verified card populations at 2026-08-12T11:29:19+09:00.
+
+Collector started 2026-08-12T20:12:57+09:00
+usage: pi_collector.py [-h] [--card CARD] [--delay DELAY]
+
+Collect verified PSA populations with Chromium on Raspberry Pi.
+
+options:
+  -h, --help     show this help message and exit
+  --card CARD    collect only one configured card id
+  --delay DELAY  seconds between PSA requests
