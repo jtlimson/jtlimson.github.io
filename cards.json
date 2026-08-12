@@ -51,19 +51,6 @@
     "reference_total_graded": 86162,
     "reference_basis": "PSA most graded during the 2020s"
   },
-  "charizard-holo-004": {
-    "name": "Charizard Holo Base Set 4/102",
-    "psa_cert": "05318636",
-    "psa_url": "https://www.psacard.com/cert/05318636/psa",
-    "expected_year": "1999",
-    "expected_brand": "POKEMON GAME",
-    "expected_subject": "CHARIZARD-HOLO",
-    "expected_card_number": "4",
-    "expected_variety": "",
-    "reference_rank": 5,
-    "reference_total_graded": 78627,
-    "reference_basis": "PSA most graded during the 2020s"
-  },
   "pikachu-sv-promo-001": {
     "name": "Pikachu Scarlet & Violet Pre-Order 001",
     "psa_cert": "80282211",
@@ -88,19 +75,6 @@
     "expected_variety": "PRISMATIC EVOLUTIONS ETB",
     "reference_rank": 8,
     "reference_total_graded": 66077,
-    "reference_basis": "PSA most graded during the 2020s"
-  },
-  "ancient-mew": {
-    "name": "Ancient Mew Pokémon 2000 Movie",
-    "psa_cert": "101091008",
-    "psa_url": "https://www.psacard.com/cert/101091008/psa",
-    "expected_year": "2000",
-    "expected_brand": "POKEMON GAME MOVIE",
-    "expected_subject": "ANCIENT MEW",
-    "expected_card_number": "",
-    "expected_variety": "POKEMON 2000 MOVIE",
-    "reference_rank": 9,
-    "reference_total_graded": 61834,
     "reference_basis": "PSA most graded during the 2020s"
   },
   "moltres-zapdos-articuno-gx-sm210": {
