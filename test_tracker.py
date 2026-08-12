@@ -212,6 +212,13 @@ Variety/Pedigree EEVEE HEROES
         self.assertEqual(elapsed, 10)
         self.assertAlmostEqual(change, 3.0)
 
+    def test_population_comparison_keeps_only_top_ten(self):
+        items = [(f"Card {value}", value) for value in range(15)]
+        result = tracker.top_population_items(items)
+        self.assertEqual(len(result), 10)
+        self.assertEqual(result[0], ("Card 14", 14))
+        self.assertEqual(result[-1], ("Card 5", 5))
+
     def test_dashboard_renders_an_asi_panel_for_every_card(self):
         path = Path(__file__).parent / "data" / "_test_dashboard.html"
         about_path = Path(__file__).parent / "data" / "_test_about_asi.html"
