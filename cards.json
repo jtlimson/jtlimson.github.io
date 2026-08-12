@@ -38,19 +38,6 @@
     "reference_total_graded": 86575,
     "reference_basis": "PSA most graded during the 2020s"
   },
-  "charizard-v-050": {
-    "name": "Charizard V Promo SWSH050",
-    "psa_cert": "103091987",
-    "psa_url": "https://www.psacard.com/cert/103091987/psa",
-    "expected_year": "2020",
-    "expected_brand": "POKEMON SWSH BLACK STAR PROMO",
-    "expected_subject": "CHARIZARD V",
-    "expected_card_number": "050",
-    "expected_variety": "CHMPN.PATH ELITE TRNR.BOX",
-    "reference_rank": 4,
-    "reference_total_graded": 86162,
-    "reference_basis": "PSA most graded during the 2020s"
-  },
   "pikachu-sv-promo-001": {
     "name": "Pikachu Scarlet & Violet Pre-Order 001",
     "psa_cert": "80282211",
@@ -62,32 +49,6 @@
     "expected_variety": "SCARLET/VIOLET PRE-ORDER",
     "reference_rank": 6,
     "reference_total_graded": 71805,
-    "reference_basis": "PSA most graded during the 2020s"
-  },
-  "eevee-svp-173": {
-    "name": "Eevee Prismatic Evolutions ETB 173",
-    "psa_cert": "111607960",
-    "psa_url": "https://www.psacard.com/cert/111607960/psa",
-    "expected_year": "2025",
-    "expected_brand": "POKEMON SVP EN-SV BLACK STAR PROMO",
-    "expected_subject": "EEVEE",
-    "expected_card_number": "173",
-    "expected_variety": "PRISMATIC EVOLUTIONS ETB",
-    "reference_rank": 8,
-    "reference_total_graded": 66077,
-    "reference_basis": "PSA most graded during the 2020s"
-  },
-  "moltres-zapdos-articuno-gx-sm210": {
-    "name": "Moltres & Zapdos & Articuno GX SM210",
-    "psa_cert": "70650956",
-    "psa_url": "https://www.psacard.com/cert/70650956/psa",
-    "expected_year": "2019",
-    "expected_brand": "POKEMON SM BLACK STAR PROMO",
-    "expected_subject": "MLTRS/ZPDS/ARTCN.GX",
-    "expected_card_number": "SM210",
-    "expected_variety": "HIF ELITE TRAINER BOX-F.A.",
-    "reference_rank": 10,
-    "reference_total_graded": 56799,
     "reference_basis": "PSA most graded during the 2020s"
   },
   "mega-gengar-ex-240": {
