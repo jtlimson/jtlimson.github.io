@@ -1,6 +1,7 @@
 {
   "pikachu-mcdonalds-020": {
     "name": "Pikachu McDonald's Promo 020",
+    "snkrdunk_product_id": 671486,
     "psa_cert": "129322206",
     "psa_url": "https://www.psacard.com/cert/129322206/psa",
     "expected_year": "2025",
@@ -40,6 +41,7 @@
   },
   "pikachu-sv-promo-001": {
     "name": "Pikachu Scarlet & Violet Pre-Order 001",
+    "snkrdunk_product_id": 104784,
     "psa_cert": "80282211",
     "psa_url": "https://www.psacard.com/cert/80282211/psa",
     "expected_year": "2022",
@@ -53,6 +55,7 @@
   },
   "mega-gengar-ex-240": {
     "name": "Mega Gengar ex SAR 240/193",
+    "snkrdunk_product_id": 724996,
     "psa_cert": "157096189",
     "psa_url": "https://www.psacard.com/cert/157096189/psa",
     "expected_year": "2025",
@@ -63,6 +66,7 @@
   },
   "umbreon-ex-217": {
     "name": "Umbreon ex SAR 217/187",
+    "snkrdunk_product_id": 455596,
     "psa_cert": "106454363",
     "psa_url": "https://www.psacard.com/cert/106454363/psa",
     "expected_year": "2024",
@@ -76,6 +80,7 @@
   },
   "mega-darkrai-ex-114": {
     "name": "Mega Darkrai ex SAR 114/081",
+    "snkrdunk_product_id": 826553,
     "psa_cert": "163314143",
     "psa_url": "https://www.psacard.com/cert/163314143/psa",
     "expected_year": "2026",
@@ -86,6 +91,7 @@
   },
   "pikachu-ex-234": {
     "name": "Pikachu ex SAR 234/193",
+    "snkrdunk_product_id": 730956,
     "psa_cert": "152488646",
     "psa_url": "https://www.psacard.com/cert/152488646/psa",
     "expected_year": "2025",
@@ -96,6 +102,7 @@
   },
   "pikachu-ex-764": {
     "name": "Pikachu ex SAR-style 764/742",
+    "snkrdunk_product_id": 737036,
     "psa_cert": "155142448",
     "psa_url": "https://www.psacard.com/cert/155142448/psa",
     "expected_year": "2025",
@@ -106,6 +113,7 @@
   },
   "rockets-mewtwo-ex-237": {
     "name": "Rocket's Mewtwo ex SAR 237/193",
+    "snkrdunk_product_id": 730958,
     "psa_cert": "142644844",
     "psa_url": "https://www.psacard.com/cert/142644844/psa",
     "expected_year": "2025",
@@ -116,6 +124,7 @@
   },
   "mega-dragonite-ex-246": {
     "name": "Mega Dragonite ex SAR 246/193",
+    "snkrdunk_product_id": 730964,
     "psa_cert": "153173037",
     "psa_url": "https://www.psacard.com/cert/153173037/psa",
     "expected_year": "2025",
@@ -126,6 +135,7 @@
   },
   "charizard-ex-201": {
     "name": "Charizard ex SAR 201/165",
+    "snkrdunk_product_id": 128117,
     "psa_cert": "84248781",
     "psa_url": "https://www.psacard.com/cert/84248781/psa",
     "expected_year": "2023",
@@ -136,6 +146,7 @@
   },
   "charizard-ex-134": {
     "name": "Charizard ex SAR 134/108",
+    "snkrdunk_product_id": 132279,
     "psa_cert": "97617915",
     "psa_url": "https://www.psacard.com/cert/97617915/psa",
     "expected_year": "2023",
@@ -146,6 +157,7 @@
   },
   "mew-ex-347": {
     "name": "Mew ex SAR 347/190",
+    "snkrdunk_product_id": 164250,
     "psa_cert": "123263015",
     "psa_url": "https://www.psacard.com/cert/123263015/psa",
     "expected_year": "2023",
@@ -156,6 +168,7 @@
   },
   "charizard-ex-349": {
     "name": "Charizard ex SAR 349/190",
+    "snkrdunk_product_id": 162095,
     "psa_cert": "84814871",
     "psa_url": "https://www.psacard.com/cert/84814871/psa",
     "expected_year": "2023",
@@ -166,6 +179,7 @@
   },
   "mega-charizard-x-ex-110": {
     "name": "Mega Charizard X ex SAR 110/080",
+    "snkrdunk_product_id": 704401,
     "psa_cert": "150956440",
     "psa_url": "https://www.psacard.com/cert/150956440/psa",
     "expected_year": "2025",
@@ -176,6 +190,7 @@
   },
   "giratina-v-111": {
     "name": "Giratina V Alt Art 111/100",
+    "snkrdunk_product_id": 93379,
     "psa_cert": "102844039",
     "psa_url": "https://www.psacard.com/cert/102844039/psa",
     "expected_year": "2022",
@@ -186,6 +201,7 @@
   },
   "rayquaza-vmax-083": {
     "name": "Rayquaza VMAX Alt Art 083/067",
+    "snkrdunk_product_id": 93017,
     "psa_cert": "82607058",
     "psa_url": "https://www.psacard.com/cert/82607058/psa",
     "expected_year": "2021",
@@ -206,6 +222,7 @@
   },
   "giratina-vstar-261": {
     "name": "Giratina VSTAR UR 261/172",
+    "snkrdunk_product_id": 105536,
     "psa_cert": "89854465",
     "psa_url": "https://www.psacard.com/cert/89854465/psa",
     "expected_year": "2022",
@@ -216,6 +233,7 @@
   },
   "arceus-vstar-262": {
     "name": "Arceus VSTAR UR 262/172",
+    "snkrdunk_product_id": 105530,
     "psa_cert": "76548435",
     "psa_url": "https://www.psacard.com/cert/76548435/psa",
     "expected_year": "2022",
@@ -226,6 +244,7 @@
   },
   "umbreon-v-085": {
     "name": "Umbreon V 085/069",
+    "snkrdunk_product_id": 91176,
     "psa_cert": "93420264",
     "psa_url": "https://www.psacard.com/cert/93420264/psa",
     "expected_year": "2021",
@@ -236,6 +255,7 @@
   },
   "tohoku-pikachu-260": {
     "name": "Tohoku's Pikachu Promo 260/SV-P",
+    "snkrdunk_product_id": 618445,
     "psa_cert": "141264605",
     "psa_url": "https://www.psacard.com/cert/141264605/psa",
     "expected_year": "2025",
@@ -246,6 +266,7 @@
   },
   "hiroshima-pikachu-261": {
     "name": "Hiroshima's Pikachu Promo 261/SV-P",
+    "snkrdunk_product_id": 618446,
     "psa_cert": "165369873",
     "psa_url": "https://www.psacard.com/cert/165369873/psa",
     "expected_year": "2025",
@@ -256,6 +277,7 @@
   },
   "fukuoka-pikachu-289": {
     "name": "Fukuoka's Pikachu Promo 289/SV-P",
+    "snkrdunk_product_id": 618447,
     "psa_cert": "153861126",
     "psa_url": "https://www.psacard.com/cert/153861126/psa",
     "expected_year": "2025",
@@ -266,6 +288,7 @@
   },
   "pikachu-promo-208": {
     "name": "Pikachu Promo 208/S-P",
+    "snkrdunk_product_id": 106796,
     "psa_cert": "109408038",
     "psa_url": "https://www.psacard.com/cert/109408038/psa",
     "expected_year": "2021",
@@ -276,6 +299,7 @@
   },
   "detective-pikachu-098": {
     "name": "Detective Pikachu Promo 098/SV-P",
+    "snkrdunk_product_id": 135232,
     "psa_cert": "158705975",
     "psa_url": "https://www.psacard.com/cert/158705975/psa",
     "expected_year": "2023",
@@ -296,6 +320,7 @@
   },
   "eevee-art-755": {
     "name": "Eevee Art Rare 755/742",
+    "snkrdunk_product_id": 737035,
     "psa_cert": "159183295",
     "psa_url": "https://www.psacard.com/cert/159183295/psa",
     "expected_year": "2025",
@@ -306,6 +331,7 @@
   },
   "pikachu-chr-073": {
     "name": "Pikachu CHR 073/071",
+    "snkrdunk_product_id": 96667,
     "psa_cert": "154897988",
     "psa_url": "https://www.psacard.com/cert/154897988/psa",
     "expected_year": "2022",

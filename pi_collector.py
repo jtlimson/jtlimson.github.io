@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import subprocess
@@ -11,6 +12,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from urllib.parse import urlencode
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -21,6 +23,8 @@ TRACKER_PATH = ROOT / "tracker.py"
 PUBLISH_PATH = ROOT / "publish_site.py"
 LOG_PATH = ROOT / "data" / "collector.log"
 JST = ZoneInfo("Asia/Tokyo")
+SNKRDUNK_PSA10_CONDITION_ID = 22
+SNKRDUNK_PAGE_SIZE = 100
 
 
 class Tee:
@@ -67,6 +71,22 @@ def fetch(url: str) -> bytes:
         return response.read()
 
 
+def fetch_snkrdunk(url: str) -> bytes:
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+            ),
+            "Accept": "text/html,application/json;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=60) as response:
+        return response.read()
+
+
 def mirror_field(body: str, label: str) -> str | None:
     match = re.search(rf"(?:^|\n){re.escape(label)}\s+([^\n]+)", body)
     return match.group(1).strip() if match else None
@@ -104,6 +124,85 @@ def parse_psa(body: str, card: dict[str, str]) -> tuple[int, float | None, str |
 def read_psa(card: dict[str, str]) -> tuple[int, float | None, str | None]:
     body = fetch(mirror_url(card)).decode("utf-8")
     return parse_psa(body, card)
+
+
+def parse_snkrdunk_summary(body: str) -> tuple[int, int]:
+    """Return the raw-card listing count and minimum price in JPY."""
+    match = re.search(r':summary="(\{.*?\})\s*"', body, re.DOTALL)
+    if not match:
+        raise ValueError("SNKRDUNK product summary not found")
+    summary = json.loads(html.unescape(match.group(1)))
+    listing_count = summary.get("usedListingCount")
+    price = summary.get("usedMinPriceAmount")
+    currency = summary.get("usedMinPriceCurrency")
+    if not isinstance(listing_count, int) or listing_count < 0:
+        raise ValueError("invalid SNKRDUNK raw listing count")
+    if not isinstance(price, int) or price <= 0 or currency != "JPY":
+        raise ValueError("invalid SNKRDUNK raw JPY price")
+    return listing_count, price
+
+
+def parse_snkrdunk_psa10_listings(body: str) -> list[dict[str, object]]:
+    payload = json.loads(body)
+    listings = payload.get("usedListings")
+    if not isinstance(listings, list):
+        raise ValueError("SNKRDUNK usedListings not found")
+    for listing in listings:
+        if (
+            not isinstance(listing, dict)
+            or listing.get("condition") != "PSA 10"
+            or listing.get("currency") != "JPY"
+            or not isinstance(listing.get("priceAmount"), int)
+        ):
+            raise ValueError("invalid SNKRDUNK PSA 10 listing")
+    return listings
+
+
+def read_snkrdunk_market(product_id: int) -> tuple[int, float]:
+    """Return active PSA 10 count and raw/PSA10 premium from SNKRDUNK."""
+    product_url = f"https://snkrdunk.com/en/trading-cards/{product_id}"
+    _, raw_price_jpy = parse_snkrdunk_summary(
+        fetch_snkrdunk(product_url).decode("utf-8")
+    )
+    product_code = f"SW---{product_id}"
+    listings: list[dict[str, object]] = []
+    page = 1
+    while True:
+        query = urlencode(
+            {
+                "perPage": SNKRDUNK_PAGE_SIZE,
+                "page": page,
+                "sortType": "price_asc",
+                "isOnlyOnSale": "true",
+                "conditionID": SNKRDUNK_PSA10_CONDITION_ID,
+            }
+        )
+        url = f"https://snkrdunk.com/en/v1/products/{product_code}/used-listings?{query}"
+        batch = parse_snkrdunk_psa10_listings(fetch_snkrdunk(url).decode("utf-8"))
+        listings.extend(batch)
+        if len(batch) < SNKRDUNK_PAGE_SIZE:
+            break
+        page += 1
+    if not listings:
+        raise ValueError("SNKRDUNK has no active PSA 10 listings")
+    lowest_psa10_jpy = min(int(item["priceAmount"]) for item in listings)
+    spread = (lowest_psa10_jpy - raw_price_jpy) * 100 / raw_price_jpy
+    return len(listings), spread
+
+
+def record_snkrdunk_market(
+    card_id: str, date: str, listing_count: int, raw_psa_spread: float
+) -> None:
+    subprocess.run(
+        [
+            sys.executable, str(TRACKER_PATH), "record-market",
+            "--card", card_id, "--date", date,
+            "--listing-count", str(listing_count),
+            "--raw-psa-spread", f"{raw_psa_spread:.6f}",
+        ],
+        cwd=ROOT,
+        check=True,
+    )
 
 
 def update_image(card_id: str, image_url: str | None) -> None:
@@ -161,6 +260,22 @@ def main() -> int:
         except (RuntimeError, ValueError, urllib.error.URLError, subprocess.CalledProcessError) as exc:
             failures.append(f"{card_id}: {exc}")
             print(f"FAILED {card_id}: {exc}", file=sys.stderr)
+        product_id = card.get("snkrdunk_product_id")
+        if product_id is not None:
+            try:
+                listing_count, raw_psa_spread = read_snkrdunk_market(int(product_id))
+                record_snkrdunk_market(
+                    card_id, observed_at[:10], listing_count, raw_psa_spread
+                )
+                print(
+                    f"Recorded {card_id}: {listing_count} active SNKRDUNK PSA 10 "
+                    f"listing(s); raw/PSA10 spread {raw_psa_spread:.1f}%"
+                )
+            except (
+                ValueError, urllib.error.URLError, subprocess.CalledProcessError
+            ) as exc:
+                failures.append(f"{card_id} SNKRDUNK: {exc}")
+                print(f"FAILED {card_id} SNKRDUNK: {exc}", file=sys.stderr)
 
     subprocess.run(
         [sys.executable, str(TRACKER_PATH), "dashboard", "--days", "30"],

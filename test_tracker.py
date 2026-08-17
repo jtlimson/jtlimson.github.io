@@ -1,4 +1,5 @@
 import csv
+import json
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -57,6 +58,34 @@ Variety/Pedigree EEVEE HEROES
 """
         with self.assertRaisesRegex(RuntimeError, "identity mismatch"):
             pi_collector.parse_psa(body, card)
+
+    def test_snkrdunk_summary_reads_raw_market(self):
+        body = ':summary="{&#34;usedListingCount&#34;:12,&#34;usedMinPriceAmount&#34;:42000,&#34;usedMinPriceCurrency&#34;:&#34;JPY&#34;}\n"'
+        self.assertEqual(pi_collector.parse_snkrdunk_summary(body), (12, 42000))
+
+    def test_snkrdunk_psa10_parser_rejects_other_grades(self):
+        valid = json.dumps({"usedListings": [
+            {"condition": "PSA 10", "currency": "JPY", "priceAmount": 86000}
+        ]})
+        self.assertEqual(len(pi_collector.parse_snkrdunk_psa10_listings(valid)), 1)
+        invalid = json.dumps({"usedListings": [
+            {"condition": "PSA 9", "currency": "JPY", "priceAmount": 50000}
+        ]})
+        with self.assertRaisesRegex(ValueError, "invalid SNKRDUNK PSA 10"):
+            pi_collector.parse_snkrdunk_psa10_listings(invalid)
+
+    def test_snkrdunk_market_uses_same_currency_prices(self):
+        summary = ':summary="{&#34;usedListingCount&#34;:20,&#34;usedMinPriceAmount&#34;:40000,&#34;usedMinPriceCurrency&#34;:&#34;JPY&#34;}"'
+        page = json.dumps({"usedListings": [
+            {"condition": "PSA 10", "currency": "JPY", "priceAmount": 80000},
+            {"condition": "PSA 10", "currency": "JPY", "priceAmount": 90000},
+        ]})
+        with mock.patch.object(
+            pi_collector, "fetch_snkrdunk", side_effect=[summary.encode(), page.encode()]
+        ):
+            listing_count, spread = pi_collector.read_snkrdunk_market(724996)
+        self.assertEqual(listing_count, 2)
+        self.assertEqual(spread, 100.0)
 
     def test_recorded_snapshot_message_includes_price(self):
         self.assertEqual(
@@ -281,6 +310,22 @@ Variety/Pedigree EEVEE HEROES
         self.assertIn('aria-controls="population-comparison-content"', rendered)
         self.assertIn('comparisonStorageKey="psa-population-comparison-hidden-v2"', rendered)
         self.assertIn("savedComparisonState===null?true", rendered)
+        self.assertEqual(rendered.count('class="bookmark-button"'), len(cards))
+        self.assertIn('id="card-search"', rendered)
+        self.assertIn('data-card-filter="bookmarked"', rendered)
+        self.assertIn('id="card-sort"', rendered)
+        self.assertIn('<option value="population">PSA 10 population</option>', rendered)
+        self.assertIn('<option value="price">PSA estimate</option>', rendered)
+        self.assertIn('<option value="asi">ASI</option>', rendered)
+        self.assertIn('data-card-id="card-a"', rendered)
+        self.assertIn('data-card-name="card a"', rendered)
+        self.assertIn('data-asi="80.0"', rendered)
+        self.assertIn('bookmarkStorageKey="psa-card-bookmarks-v1"', rendered)
+        self.assertIn("bookmarkedCards.has(card.dataset.cardId)", rendered)
+        self.assertIn("card.hidden=!(matchesSearch&&matchesFilter)", rendered)
+        self.assertIn("cards.sort(compareCards)", rendered)
+        self.assertIn("localStorage.setItem(bookmarkStorageKey", rendered)
+        self.assertIn('id="card-empty" hidden', rendered)
         self.assertNotIn(">Open PSA record</a>", rendered)
         self.assertNotIn('class="reference-meta"', rendered)
         self.assertNotIn("PSA submissions in the 2020s reference period", rendered)

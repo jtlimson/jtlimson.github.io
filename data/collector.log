@@ -35,3 +35,38 @@ options:
   -h, --help     show this help message and exit
   --card CARD    collect only one configured card id
   --delay DELAY  seconds between PSA requests
+
+Collector started 2026-08-17T21:29:57+09:00
+Recorded umbreon-ex-217: 242 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 88.5%
+FAILED publish: Command '['/usr/bin/python', '/home/yuka/card-pop-monitor/publish/jtlimson.github.io/publish_site.py']' returned non-zero exit status 1.
+Completed with 1 failure(s).
+
+Collector started 2026-08-17T22:17:25+09:00
+Recorded pikachu-mcdonalds-020: 386 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 412.7%
+Recorded pikachu-sv-promo-001: 373 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 440.2%
+Recorded mega-gengar-ex-240: 222 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 115.0%
+Recorded umbreon-ex-217: 244 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 88.5%
+Recorded mega-darkrai-ex-114: 36 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 194.7%
+Recorded pikachu-ex-234: 314 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 180.0%
+Recorded pikachu-ex-764: 114 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 148.0%
+Recorded rockets-mewtwo-ex-237: 219 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 131.9%
+Recorded mega-dragonite-ex-246: 173 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 140.0%
+Recorded charizard-ex-201: 111 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 81.8%
+Recorded charizard-ex-134: 106 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 208.9%
+Recorded mew-ex-347: 58 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 141.9%
+Recorded charizard-ex-349: 90 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 182.4%
+Recorded mega-charizard-x-ex-110: 247 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 129.7%
+Recorded giratina-v-111: 65 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 116.5%
+Recorded rayquaza-vmax-083: 44 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 103.3%
+Recorded giratina-vstar-261: 88 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 56.6%
+Recorded arceus-vstar-262: 71 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 94.4%
+Recorded umbreon-v-085: 78 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 177.5%
+Recorded tohoku-pikachu-260: 228 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 355.9%
+Recorded hiroshima-pikachu-261: 130 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 261.0%
+Recorded fukuoka-pikachu-289: 284 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 209.1%
+Recorded pikachu-promo-208: 170 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 384.0%
+Recorded detective-pikachu-098: 198 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 156.2%
+Recorded eevee-art-755: 40 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 365.0%
+Recorded pikachu-chr-073: 162 active SNKRDUNK PSA 10 listing(s); raw/PSA10 spread 820.0%
+FAILED publish: Command '['/usr/bin/python', '/home/yuka/card-pop-monitor/publish/jtlimson.github.io/publish_site.py']' returned non-zero exit status 1.
+Completed with 1 failure(s).
