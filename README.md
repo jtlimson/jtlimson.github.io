@@ -74,6 +74,13 @@ ASI actions are BUY/HOLD (80–100), ACCUMULATE (65–79), WAIT (45–64), AVOID
 signals: rising PSA10 population, no new recent price low, and stable/rising
 sales velocity.
 
+Cards with a `snkrdunk_product_id` are also sampled by the automated collector.
+It requests SNKRDUNK condition ID 22 (PSA 10), counts active listings across
+all result pages, and compares the lowest PSA 10 listing with the raw minimum
+price. Both prices are read in JPY before calculating the percentage spread,
+so currencies are never mixed. A failed SNKRDUNK request is reported without
+replacing the last valid market observation.
+
 Every card tile includes its own ASI summary and dual-axis price/population
 history with ASI regime markers. The Component breakdown button opens a native
 modal containing that card's six weighted signals; it closes with its close
