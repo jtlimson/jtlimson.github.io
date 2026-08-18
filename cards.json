@@ -122,6 +122,16 @@
     "expected_card_number": "237",
     "expected_variety": "SPECIAL ART RARE"
   },
+  "rockets-mewtwo-ex-125": {
+    "name": "Rocket's Mewtwo ex SAR 125/098",
+    "psa_cert": "158137815",
+    "psa_url": "https://www.psacard.com/cert/158137815/psa",
+    "expected_year": "2025",
+    "expected_brand": "POKEMON JAPANESE SV10-GLORY OF TEAM ROCKET",
+    "expected_subject": "ROCKET'S MEWTWO ex",
+    "expected_card_number": "125",
+    "expected_variety": "SPECIAL ART RARE"
+  },
   "mega-dragonite-ex-246": {
     "name": "Mega Dragonite ex SAR 246/193",
     "snkrdunk_product_id": 730964,
