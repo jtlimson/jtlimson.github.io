@@ -45,12 +45,11 @@ MARKET_FIELDNAMES = [
     "ASI",
 ]
 ASI_WEIGHTS = {
-    "Price vs POP absorption": 0.30,
-    "Sales velocity": 0.20,
-    "PSA10 population growth": 0.15,
-    "Price structure": 0.15,
-    "Listing absorption": 0.10,
-    "Raw/PSA10 spread": 0.10,
+    "Price vs POP absorption": 0.375,
+    "PSA10 population growth": 0.1875,
+    "Price structure": 0.1875,
+    "Listing absorption": 0.125,
+    "Raw/PSA10 spread": 0.125,
 }
 
 
@@ -236,23 +235,6 @@ def score_aps(value: float | None) -> float | None:
     return 10
 
 
-def score_sales(row: dict[str, str]) -> float | None:
-    sales_7d = optional_float(row.get("sales_7d"))
-    sales_30d = optional_float(row.get("sales_30d"))
-    if sales_7d is None or sales_30d in (None, 0):
-        return None
-    pace = sales_7d * 30 / (sales_30d * 7)
-    if pace >= 1.25:
-        return 100
-    if pace >= 1:
-        return 80
-    if pace >= 0.75:
-        return 55
-    if pace >= 0.5:
-        return 30
-    return 10
-
-
 def score_pop_growth(value: float | None) -> float | None:
     if value is None:
         return None
@@ -348,7 +330,6 @@ def calculate_asi(
         aps = calculate_aps(price_change, pop_change)
     components: dict[str, float | None] = {
         "Price vs POP absorption": score_aps(aps),
-        "Sales velocity": score_sales(row),
         "PSA10 population growth": score_pop_growth(pop_change),
         "Price structure": score_price_structure(price_change),
         "Listing absorption": score_listing_absorption(card_rows, current_index),
@@ -946,7 +927,7 @@ def component_breakdown(result: dict[str, object]) -> str:
         score = components[name]
         score_html = f"{score:.0f}/100" if score is not None else "n/a"
         rows.append(
-            f'<tr><td>{html.escape(name)}</td><td>{weight:.0%}</td><td>{score_html}</td></tr>'
+            f'<tr><td>{html.escape(name)}</td><td>{weight * 100:g}%</td><td>{score_html}</td></tr>'
         )
     return (
         '<table class="components"><thead><tr><th>Component</th><th>Weight</th><th>Signal</th></tr></thead>'
@@ -1008,12 +989,11 @@ def card_asi_panel(
 
 def about_asi_html(generated: str) -> str:
     component_rows = [
-        ("Price vs POP absorption", "30%", "APS: PSA-estimate resilience while PSA 10 supply grows", "The estimate holds or rises as population expands"),
-        ("Sales velocity", "20%", "7-day sales pace compared with the 30-day pace", "Recent sales are stable or accelerating"),
-        ("PSA 10 population growth", "15%", "30-day growth in graded PSA 10 supply", "Supply growth is low or slowing"),
-        ("Price structure", "15%", "30-day PSA estimate change", "The estimate is flat, rising, or forming higher lows"),
-        ("Listing absorption", "10%", "7-day change in active listing count", "Available inventory is stable or falling"),
-        ("Raw/PSA 10 spread", "10%", "Premium of a PSA 10 over the raw card", "A healthy grading premium remains intact"),
+        ("Price vs POP absorption", "37.5%", "APS: PSA-estimate resilience while PSA 10 supply grows", "The estimate holds or rises as population expands"),
+        ("PSA 10 population growth", "18.75%", "30-day growth in graded PSA 10 supply", "Supply growth is low or slowing"),
+        ("Price structure", "18.75%", "30-day PSA estimate change", "The estimate is flat, rising, or forming higher lows"),
+        ("Listing absorption", "12.5%", "7-day change in active listing count", "Available inventory is stable or falling"),
+        ("Raw/PSA 10 spread", "12.5%", "Premium of a PSA 10 over the raw card", "A healthy grading premium remains intact"),
     ]
     component_html = "".join(
         f"<tr><td><strong>{html.escape(name)}</strong></td><td>{weight}</td>"
@@ -1030,7 +1010,7 @@ def about_asi_html(generated: str) -> str:
 <div class="hero"><header><div class="eyebrow">Methodology</div><h1>What is ASI?</h1><p class="lede"><strong>ASI</strong> is the Accumulation Strength Indicator: a 0–100 score that estimates whether buyer demand is absorbing new PSA 10 supply for an individual card.</p></header><aside class="score-card" aria-label="Example ASI score"><div class="eyebrow">Example</div><strong>72<small>/100</small></strong><span>ACCUMULATE</span></aside></div>
 <div class="callout"><strong>The central question</strong>When PSA 10 population continues to rise, does the market absorb those additional slabs without price, sales, and listings deteriorating?</div>
 <section class="section"><div class="eyebrow">01 · Interpretation</div><h2>ASI is a supply-and-demand monitor</h2><p>A large PSA 10 population is not automatically bearish. A card can support a high population when transaction demand and listing absorption remain strong. ASI therefore focuses on the relationship between supply growth, price behavior, sales activity, and available inventory—not population alone.</p><p>ASI is calculated independently for every tracked card and date. It is a monitoring signal, not a price target, appraisal, or promise of future returns.</p></section>
-<section class="section"><div class="eyebrow">02 · Formula</div><h2>Six weighted components</h2><p>Each available component is converted to a 0–100 signal score, multiplied by its target weight, and combined into the final ASI.</p><div class="formula">ASI = Σ(component score × component weight) ÷ Σ(available weights)</div><div class="table-wrap"><table><thead><tr><th>Component</th><th>Weight</th><th>What it measures</th><th>Bullish interpretation</th></tr></thead><tbody>{component_html}</tbody></table></div><div class="callout"><strong>Why absorption has the largest weight</strong>Price holding steady while graded supply expands is direct evidence that buyers are absorbing new slabs. It receives 30% of the model's target weight.</div></section>
+<section class="section"><div class="eyebrow">02 · Formula</div><h2>Five weighted components</h2><p>Each available component is converted to a 0–100 signal score, multiplied by its target weight, and combined into the final ASI.</p><div class="formula">ASI = Σ(component score × component weight) ÷ Σ(available weights)</div><div class="table-wrap"><table><thead><tr><th>Component</th><th>Weight</th><th>What it measures</th><th>Bullish interpretation</th></tr></thead><tbody>{component_html}</tbody></table></div><div class="callout"><strong>Why absorption has the largest weight</strong>Price holding steady while graded supply expands is direct evidence that buyers are absorbing new slabs. It receives 37.5% of the model's target weight.</div></section>
 <section class="section"><div class="eyebrow">03 · APS</div><h2>Absorption per +10% Supply</h2><p>APS normalizes the price change to a common +10% increase in PSA 10 population. This makes cards with different rates of population growth easier to compare.</p><div class="formula">APS = 30-day price change % × (10 ÷ 30-day PSA 10 population change %)</div><p>Example: if population rises 10.4% while price rises 1.2%, APS is approximately +1.15. A positive APS means price increased despite expanding supply.</p><div class="table-wrap"><table class="aps"><thead><tr><th>APS</th><th>Regime</th><th>Component score</th></tr></thead><tbody><tr><td>&gt; 0</td><td>Strong</td><td>100</td></tr><tr><td>0 to −3</td><td>Healthy</td><td>80</td></tr><tr><td>−3 to −7</td><td>Moderate</td><td>55</td></tr><tr><td>−7 to −12</td><td>Weak</td><td>30</td></tr><tr><td>&lt; −12</td><td>Very weak</td><td>10</td></tr></tbody></table></div><p class="fine">APS is unavailable when there is no valid 30-day comparison or population growth is zero or negative.</p></section>
 <section class="section"><div class="eyebrow">04 · Score zones</div><h2>How to read the result</h2><div class="table-wrap"><table class="zones"><thead><tr><th>ASI</th><th>Action label</th><th>Market phase</th><th>Reading</th></tr></thead><tbody><tr><td><span class="zone z-green"></span>80–100</td><td>BUY / HOLD</td><td>Strong accumulation / markup</td><td>Broad evidence of demand absorbing supply</td></tr><tr><td><span class="zone z-green"></span>65–79</td><td>ACCUMULATE</td><td>Accumulation</td><td>Constructive signals, but not uniformly strong</td></tr><tr><td><span class="zone z-yellow"></span>45–64</td><td>WAIT</td><td>Neutral</td><td>Mixed evidence; watch for confirmation</td></tr><tr><td><span class="zone z-orange"></span>30–44</td><td>AVOID</td><td>Distribution</td><td>Supply pressure or weakening demand</td></tr><tr><td><span class="zone z-red"></span>0–29</td><td>WAIT FOR FLOOR</td><td>Capitulation</td><td>Demand is not yet absorbing available supply</td></tr></tbody></table></div></section>
 <section class="section"><div class="eyebrow">05 · Confidence &amp; missing data</div><h2>A score is only as useful as its coverage</h2><div class="steps"><div class="step"><b>HIGH</b><strong>≥80% input weight</strong><span>At least 30 days of history</span></div><div class="step"><b>MEDIUM</b><strong>≥50% input weight</strong><span>At least 14 days of history</span></div><div class="step"><b>LOW</b><strong>Anything less</strong><span>Early or incomplete dataset</span></div></div><p>Once two dated observations are available, the dashboard calculates a provisional score with softened POSITIVE WATCH, WATCH, or CAUTION language. Definitive BUY / HOLD, AVOID, and WAIT FOR FLOOR labels require a measured 30-day baseline.</p><p>The provisional calculation linearly projects the real change observed since baseline to a 30-day equivalent, keeps confidence Low, and never writes predicted rows into history. It automatically switches to measured 30-day changes when enough real data exists.</p><p>Missing components are excluded instead of being scored as zero. The remaining weights are normalized, and the modal reports the available input weight. This prevents absent data from creating a false bearish signal, but a low-confidence ASI should not be treated like a fully observed score.</p></section>

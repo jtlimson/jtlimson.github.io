@@ -58,9 +58,9 @@ in `data/market_history.csv`. The persisted daily fields are `date`,
 `sales_30d`, `lowest_listing`, `listing_count`, `raw_psa_spread`, `APS`, and
 `ASI` (plus `card_id` so the file remains usable for every tracked card).
 
-ASI weights are price-vs-pop absorption 30%, sales velocity 20%, PSA10
-population growth 15%, price structure 15%, listing absorption 10%, and the
-raw/PSA10 spread 10%. Missing components are excluded and the available
+ASI weights are price-vs-pop absorption 37.5%, PSA10 population growth 18.75%,
+price structure 18.75%, listing absorption 12.5%, and the raw/PSA10 spread
+12.5%. Missing components are excluded and the available
 weights are normalized; the UI exposes both coverage and confidence rather
 than treating missing live-source data as zero.
 
@@ -83,7 +83,7 @@ replacing the last valid market observation.
 
 Every card tile includes its own ASI summary and dual-axis price/population
 history with ASI regime markers. The Component breakdown button opens a native
-modal containing that card's six weighted signals; it closes with its close
+modal containing that card's five weighted signals; it closes with its close
 button, Escape, or a backdrop click.
 
 `migrate-market-history` is idempotent. It collapses existing timestamped

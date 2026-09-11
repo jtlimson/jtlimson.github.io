@@ -227,7 +227,7 @@ Variety/Pedigree EEVEE HEROES
         result = tracker.calculate_asi(rows[-1], rows, 1)
         self.assertTrue(result["provisional"])
         self.assertEqual(result["projection_days"], 3)
-        self.assertAlmostEqual(result["available_weight"], 0.6)
+        self.assertAlmostEqual(result["available_weight"], 0.75)
         self.assertIsNotNone(result["score"])
         self.assertEqual(result["confidence"], "Low")
         self.assertEqual(rows[-1]["ASI"], "")
@@ -350,9 +350,10 @@ Variety/Pedigree EEVEE HEROES
             }
         ]
         result = tracker.calculate_asi(rows[0], rows, 0)
-        # Sales pace scores 80 and a 50% raw premium scores 100.
-        self.assertAlmostEqual(result["score"], (80 * 0.2 + 100 * 0.1) / 0.3)
-        self.assertAlmostEqual(result["available_weight"], 0.3)
+        # Sales velocity is not an ASI component; only the raw premium is available.
+        self.assertEqual(result["score"], 100)
+        self.assertAlmostEqual(result["available_weight"], 0.125)
+        self.assertNotIn("Sales velocity", result["components"])
         self.assertEqual(result["confidence"], "Low")
 
     def test_accumulation_alert_requires_all_three_signals(self):
