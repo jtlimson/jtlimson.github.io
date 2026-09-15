@@ -89,6 +89,16 @@
     "expected_card_number": "114",
     "expected_variety": "SPECIAL ART RARE"
   },
+  "mega-rayquaza-ex-110": {
+    "name": "Mega Rayquaza ex SAR 110/080",
+    "psa_cert": "176907641",
+    "psa_url": "https://www.psacard.com/cert/176907641/psa",
+    "expected_year": "2026",
+    "expected_brand": "POKEMON JAPANESE M6-STORM EMERALDA",
+    "expected_subject": "MEGA RAYQUAZA ex",
+    "expected_card_number": "110",
+    "expected_variety": "SPECIAL ART RARE"
+  },
   "pikachu-ex-234": {
     "name": "Pikachu ex SAR 234/193",
     "snkrdunk_product_id": 730956,
